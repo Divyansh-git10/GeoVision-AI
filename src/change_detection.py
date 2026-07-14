@@ -9,6 +9,11 @@ def detect_changes(before_path, after_path):
     before = cv2.imread(before_path)
     after = cv2.imread(after_path)
 
+    if before is None or after is None:
+        raise ValueError(
+            "Could not read one or both images. Please provide valid image files (e.g. PNG/JPG)."
+        )
+
     # Resize for consistency
     before = cv2.resize(before, (800, 800))
     after = cv2.resize(after, (800, 800))
